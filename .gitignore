@@ -8,3 +8,13 @@ build/
 .venv/
 venv/
 .env
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+*.webp
+generated_plot_images/

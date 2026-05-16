@@ -145,7 +145,7 @@ def plot_case(
 
     # ── layout ────────────────────────────────────────────────────────────────
     ncols  = 2 if vf_available else 1
-    fig    = plt.figure(figsize=(13 if vf_available else 7, 5))
+    fig    = plt.figure(figsize=(13 if vf_available else 7, 5), constrained_layout=True)
     gs     = gridspec.GridSpec(1, ncols, figure=fig, wspace=0.35)
     ax_sol = fig.add_subplot(gs[0, 0])
 
@@ -222,8 +222,7 @@ def plot_case(
         ax_vf.grid(True, color='#cccccc', lw=0.5, ls='--', alpha=0.6)
         ax_vf.set_axisbelow(True)
 
-    fig.suptitle(title, fontsize=13, y=1.01)
-    plt.tight_layout()
+    fig.suptitle(title, fontsize=13)
 
     if save_path:
         fig.savefig(save_path, dpi=150, bbox_inches='tight')
@@ -278,7 +277,7 @@ def plot_all_cases(a=-1.0, y0=0.0, q0=2.0, x0=2.5, b=0.5,
          lambda x,y: a*y + q0*np.exp(b*np.asarray(x, float))),
     ]
 
-    fig, axes = plt.subplots(2, 2, figsize=(13, 9))
+    fig, axes = plt.subplots(2, 2, figsize=(13, 9), constrained_layout=True)
     fig.patch.set_facecolor('#f9f8f6')
     xs = np.linspace(*x_range, 800)
 
@@ -325,8 +324,7 @@ def plot_all_cases(a=-1.0, y0=0.0, q0=2.0, x0=2.5, b=0.5,
                fontsize=10, framealpha=0.8, bbox_to_anchor=(0.5, -0.02))
 
     fig.suptitle(f"y′ = ay + q(x),   a={a},  y₀={y0},  q₀={q0},  x₀={x0},  b={b}",
-                 fontsize=13, y=1.01)
-    plt.tight_layout()
+                 fontsize=13)
 
     if save_path:
         fig.savefig(save_path, dpi=150, bbox_inches='tight')

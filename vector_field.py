@@ -111,7 +111,7 @@ def plot_vector_field(
     slope_mag = dY   # use raw slope for colour (not normalised)
 
     # ── 2. figure setup ───────────────────────────────────────────────────────
-    fig, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize, constrained_layout=True)
     fig.patch.set_facecolor("#f9f8f6")
     ax.set_facecolor("#f9f8f6")
 
@@ -223,8 +223,6 @@ def plot_vector_field(
         )
     ax.legend(handles=handles, fontsize=10, loc="upper right",
               framealpha=0.7, edgecolor="#ccc")
-
-    plt.tight_layout()
 
     if save_path:
         fig.savefig(save_path, dpi=150, bbox_inches="tight")
